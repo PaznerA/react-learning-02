@@ -7,11 +7,6 @@ export default function TodoList() {
 
     const [hasError, setError] = useState(false)
     const [list, setList] = useState([])
-    const [task, setTask] = useState({
-        id: 0,
-        title: "",
-        isDone: false
-    })
 
     const validateInput = (task) => {
         if(task.id === 0){
@@ -24,6 +19,41 @@ export default function TodoList() {
         setError()
         return true
     }
+
+
+    return <>
+        <h2>TODO List:</h2>
+        {hasError && <label color="danger">
+            {hasError}
+        </label>}
+        
+        <ListContext.Provider value={{list, setList, validateInput}}>
+            <TodoForm/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>isDone</th>
+                    </tr>
+                </thead>
+                    <TodoItemsList />
+            </table>
+        </ListContext.Provider>
+    </>
+
+
+}
+
+function TodoForm() {
+
+    const {list, setList, validateInput} = useContext(ListContext)
+
+    const [task, setTask] = useState({
+        id: 0,
+        title: "",
+        isDone: false
+    })
 
     const addTask = (e) => {
         const newId = list.length + 1
@@ -43,32 +73,7 @@ export default function TodoList() {
         }
     }
 
-    return <>
-        <h2>TODO List:</h2>
-        {hasError && <label color="danger">
-            {hasError}
-        </label>}
-        
-        <ListContext.Provider value={{list, task, addTask, handleOnChange}}>
-            <TodoForm/>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>isDone</th>
-                    </tr>
-                </thead>
-                    <TodoItemsList />
-            </table>
-        </ListContext.Provider>
-    </>
-
-
-}
-
-function TodoForm() {
-    const {task, addTask, handleOnChange} = useContext(ListContext)
+    // const {setTask} = useContext(ListContext)
     return <>
         <form>
             <label>Task: <input value={task.title} onChange={handleOnChange} /></label><br />
