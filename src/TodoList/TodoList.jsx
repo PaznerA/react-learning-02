@@ -18,6 +18,7 @@ export default function TodoList() {
             setError('Title cannot be empty!')
             return false
         }
+        setError()
         return true
     }
 
