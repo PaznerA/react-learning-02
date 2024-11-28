@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 class Counter {
     count = 0
@@ -27,6 +27,10 @@ function Toolbar() {
 function Display () {
     const [count, setCount] = useState(counter.count)
     // way to redraw component
-    counter.countChangeCallbacks.push(() => setCount(counter.count))
+
+    // only on init?
+    useEffect(() => {
+        counter.countChangeCallbacks.push(() => setCount(counter.count))
+    })
     return <div>count: {count}</div>
 }
