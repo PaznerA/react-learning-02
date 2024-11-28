@@ -4,6 +4,7 @@ import ListContext from "./TodoContext"
 export default function TodoItemsList() {
     const {list} = useContext(ListContext)
     return <>
+        <button>Add task</button>
         <table>
             <thead>
                 <tr>

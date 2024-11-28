@@ -1,6 +1,10 @@
 import { useContext, useState } from "react"
 import ListContext from "./TodoContext"
 
+/*
+TODO: run Console.log(data of form) in useEffect() when hiding form
+*/
+
 export default function TodoForm() {
 
     const {list, setList, setError} = useContext(ListContext)
