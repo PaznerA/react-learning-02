@@ -10,7 +10,7 @@ export default function TodoList() {
         isDone: false
     })
 
-    //too complicated state - should be parapated into mulitiple components
+    //too complicated state - should be separated into mulitiple components
     // const [data, setData] = useState({
     //     task: {
     //         id: 0,
