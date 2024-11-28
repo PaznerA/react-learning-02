@@ -1,4 +1,7 @@
-import { useState } from "react"
+import { createContext, useContext, useState } from "react"
+
+// const FormContext = createContext()
+const ListContext = createContext()
 
 export default function TodoList() {
 
@@ -9,17 +12,6 @@ export default function TodoList() {
         title: "",
         isDone: false
     })
-
-    //too complicated state - should be separated into mulitiple components
-    // const [data, setData] = useState({
-    //     task: {
-    //         id: 0,
-    //         title: "",
-    //         isDone: false
-    //     },
-    //     list: [],
-    //     error: null
-    // })
 
     const validateInput = (task) => {
         if(task.id === 0){
@@ -53,32 +45,50 @@ export default function TodoList() {
 
     return <>
         <h2>TODO List:</h2>
+        {hasError && <label color="danger">
+            {hasError}
+        </label>}
+        
+        <ListContext.Provider value={{list, task, addTask, handleOnChange}}>
+            <TodoForm/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>isDone</th>
+                    </tr>
+                </thead>
+                    <TodoItemsList />
+            </table>
+        </ListContext.Provider>
+    </>
+
+
+}
+
+function TodoForm() {
+    const {task, addTask, handleOnChange} = useContext(ListContext)
+    return <>
         <form>
             <label>Task: <input value={task.title} onChange={handleOnChange} /></label><br />
             <label>Done: <input type="checkbox" value={task.title} checked={task.isDone} onChange={handleOnChange}></input></label><br />
             <button type="button" onClick={addTask}>Add</button>
         </form>
-        {hasError && <label color="danger">
-            {hasError}
-        </label>}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>isDone</th>
-                </tr>
-            </thead>
-            <tbody>
-                {list.map((elem, i) => <tr key={i} style={{background: i%2 === 0 ? "lightgray": "black"}}>
-                        <td>{elem.id}</td>
-                        <td>{elem.title}</td>
-                        <td>{elem.isDone ? "Y" : "N"}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>
     </>
+}
 
 
+function TodoItemsList() {
+    const {list} = useContext(ListContext)
+    return <>
+        <tbody>
+            {list.map((elem, i) => <tr key={i} style={{background: i%2 === 0 ? "lightgray": "black"}}>
+                    <td>{elem.id}</td>
+                    <td>{elem.title}</td>
+                    <td>{elem.isDone ? "Y" : "N"}</td>
+                </tr>
+            )}
+        </tbody>
+    </>
 }
