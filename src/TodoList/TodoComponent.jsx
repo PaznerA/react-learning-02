@@ -3,7 +3,7 @@ import TodoForm from "./TodoForm"
 import ListContext from "./TodoContext"
 import TodoItemsList from "./TodoItemList"
 
-export default function TodoList() {
+export default function TodoComponent() {
 
     const [hasError, setError] = useState(false)
     const [list, setList] = useState([])

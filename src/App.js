@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import TodoList from './TodoList/TodoList';
+import TodoComponent from './TodoList/TodoComponent';
 import PropertiesDemo from './PropertiesDemo';
 import ContextDemo from './ContextDemo';
 
@@ -11,7 +11,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
        <ContextDemo />
        <PropertiesDemo />
-       <TodoList /> 
+       <TodoComponent /> 
       </header>
     </div>
   );
