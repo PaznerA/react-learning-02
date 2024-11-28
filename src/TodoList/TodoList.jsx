@@ -42,7 +42,7 @@ export default function TodoList() {
     return <>
         <h2>TODO List:</h2>
         <form>
-            <label>Task: </label><input value={task.title} onChange={handleOnChange} /><br />
+            <label>Task: <input value={task.title} onChange={handleOnChange} /></label><br />
             <label>Done: <input type="checkbox" value={task.title} checked={task.isDone} onChange={handleOnChange}></input></label><br />
             <button type="button" onClick={addTask}>Add</button>
         </form>
