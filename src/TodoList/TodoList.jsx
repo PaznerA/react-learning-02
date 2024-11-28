@@ -10,6 +10,17 @@ export default function TodoList() {
         isDone: false
     })
 
+    //too complicated state - should be parapated into mulitiple components
+    // const [data, setData] = useState({
+    //     task: {
+    //         id: 0,
+    //         title: "",
+    //         isDone: false
+    //     },
+    //     list: [],
+    //     error: null
+    // })
+
     const validateInput = (task) => {
         if(task.id === 0){
             throw "ID cannot be  0!"
@@ -59,7 +70,7 @@ export default function TodoList() {
                 </tr>
             </thead>
             <tbody>
-                {list.map((elem, i) => <tr key={i} style={(i%2===0) ? {background: "lightgray"} : {background: "black"}}>
+                {list.map((elem, i) => <tr key={i} style={{background: i%2 === 0 ? "lightgray": "black"}}>
                         <td>{elem.id}</td>
                         <td>{elem.title}</td>
                         <td>{elem.isDone ? "Y" : "N"}</td>
