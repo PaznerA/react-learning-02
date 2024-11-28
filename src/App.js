@@ -16,7 +16,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
        {renderTest && <UseEffectDemo />}
-       <button onClick={setRenderTest(() => false)}>CLEAN</button>
+       <button onClick={setRenderTest(() => false)}>Disable test</button>
        <ExtStateMng />
        <ContextDemo />
        <PropertiesDemo />
