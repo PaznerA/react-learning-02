@@ -27,7 +27,7 @@ export default function TodoList() {
         const newTask = ({...task, id: newId})
         if(validateInput(newTask)){
             setList(list => ([...list, newTask]))
-            setTask((old) => ({...old, title: "", isDone: false, id: 0}))
+            setTask({title: "", isDone: false, id: 0})
         }
         e.preventDefault()
     }
