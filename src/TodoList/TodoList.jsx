@@ -1,6 +1,7 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import TodoForm from "./TodoForm"
 import ListContext from "./TodoContext"
+import TodoItemsList from "./TodoItemList"
 
 export default function TodoList() {
 
@@ -28,33 +29,7 @@ export default function TodoList() {
         
         <ListContext.Provider value={{list, setList, validateInput}}>
             <TodoForm/>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>isDone</th>
-                    </tr>
-                </thead>
-                    <TodoItemsList />
-            </table>
+            <TodoItemsList />
         </ListContext.Provider>
-    </>
-
-
-}
-
-
-function TodoItemsList() {
-    const {list} = useContext(ListContext)
-    return <>
-        <tbody>
-            {list.map((elem, i) => <tr key={i} style={{background: i%2 === 0 ? "lightgray": "black"}}>
-                    <td>{elem.id}</td>
-                    <td>{elem.title}</td>
-                    <td>{elem.isDone ? "Y" : "N"}</td>
-                </tr>
-            )}
-        </tbody>
     </>
 }
