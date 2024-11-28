@@ -3,13 +3,25 @@ import ListContext from "./TodoContext"
 
 export default function TodoForm() {
 
-    const {list, setList, validateInput} = useContext(ListContext)
+    const {list, setList, setError} = useContext(ListContext)
 
     const [task, setTask] = useState({
         id: 0,
         title: "",
         isDone: false
     })
+
+    const validateInput = (task) => {
+        if(task.id === 0){
+            throw new Error('ID cannot be  0!')
+        }
+        if(task.title === ''){
+            setError('Title cannot be empty!')
+            return false
+        }
+        setError()
+        return true
+    } 
 
     const addTask = (e) => {
         const newId = list.length + 1
@@ -29,7 +41,6 @@ export default function TodoForm() {
         }
     }
 
-    // const {setTask} = useContext(ListContext)
     return <>
         <form>
             <label>Task: <input value={task.title} onChange={handleOnChange} /></label><br />
