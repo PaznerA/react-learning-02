@@ -1,26 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import TodoComponent from './TodoList/TodoComponent';
-import PropertiesDemo from './PropertiesDemo';
-import ContextDemo from './ContextDemo';
-import ExtStateMng from './ExtStateMng';
-import UseEffectDemo from './UseEffectDemo';
-import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Navigation from './Navigation';
 
 function App() {
-
-  // const [renderTest, setRenderTest] = useState(true)
-
   return (
     <div className="App">
       <header className="App-header">
+        <Navigation />
         <img src={logo} className="App-logo" alt="logo" />
-       {/* {renderTest && <UseEffectDemo />} */}
-       {/* <button onClick={setRenderTest(() => false)}>Disable test</button> */}
-       <ExtStateMng />
-       <ContextDemo />
-       <PropertiesDemo />
-       <TodoComponent /> 
+        <Outlet />
       </header>
     </div>
   );
