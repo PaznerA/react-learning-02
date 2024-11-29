@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useContext } from "react"
+import TodoContext from "./TodoContext"
+
 export default function TodoFormError() {
-    const [hasError, setError] = useState(false)
+    const {error} = useContext(TodoContext)
     return <>
-        {hasError && <label color="danger">
-            {hasError}
+        {error && <label color="danger">
+            {error}
         </label>}
     </>
 }

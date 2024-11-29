@@ -9,14 +9,14 @@ import { useState } from 'react';
 
 function App() {
 
-  const [renderTest, setRenderTest] = useState(true)
+  // const [renderTest, setRenderTest] = useState(true)
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-       {renderTest && <UseEffectDemo />}
-       <button onClick={setRenderTest(() => false)}>Disable test</button>
+       {/* {renderTest && <UseEffectDemo />} */}
+       {/* <button onClick={setRenderTest(() => false)}>Disable test</button> */}
        <ExtStateMng />
        <ContextDemo />
        <PropertiesDemo />
